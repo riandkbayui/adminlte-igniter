@@ -113,7 +113,10 @@ class Select2 {
 		*/
 		$set = json_decode(json_encode($setup));
 		$CI =& get_instance();
-		if(is_array(@$set->where) && !empty(@$set->where)) $CI->db->where($set->where);
+		if (@$set->where) {
+			$where = json_decode(json_encode($set->where), TRUE);
+			if(is_array(@$where) && !empty(@$where)) $CI->db->where($where);
+		}
 		$db = $CI->db->get($set->table)->result();
 		$str = '';
 		foreach ($db as $key => $var) {

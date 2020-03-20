@@ -22,3 +22,7 @@ function select2_preselect($selector='', $value='', $return=FALSE) {
 		}
 	}
 }
+
+function format_rupiah($number=0) {
+	return str_replace(',', '.', number_format($number));
+}

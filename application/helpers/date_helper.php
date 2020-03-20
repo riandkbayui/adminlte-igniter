@@ -10,8 +10,8 @@ function datetime_id_format($date, $format = 'Y-m-d H:i:s') {
     return date_format($date, 'd-m-Y H:i:s');
 }
 
-function date_id_to_mysql($date) {
-	$date = date_create_from_format('d-m-Y', $date);
+function date_id_to_mysql($date, $format = 'd-m-Y') {
+	$date = date_create_from_format($format, $date);
     return date_format($date, 'Y-m-d');
 }
 

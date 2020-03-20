@@ -50,14 +50,16 @@ class Adminlte {
 		$selector = 'sidebar_';
 		$sidebar_id = $this->sidebar_id;
 		$sidebar_label = $this->ci->db->where('sidebar_id', $sidebar_id)->get('_sidebar')->row('sidebar_label');
-		$parent_child['child'] = $selector.strtolower(str_replace(' ', '-', $sidebar_label));
+		// $parent_child['child'] = $selector.strtolower(str_replace(' ', '-', $sidebar_label));
+		$parent_child['child'] = $sidebar_id;
 		$index = 0;
 		while ($sidebar_id > 0) {
 			$sidebar = $this->ci->db->where('sidebar_id', $sidebar_id)->get('_sidebar')->row();
 			$sidebar_id = $sidebar->sidebar_parent;
 			$sidebar_label = $this->ci->db->where('sidebar_id', $sidebar_id)->get('_sidebar')->row('sidebar_label');
 			if (!$sidebar_id) break;
-			$parent_child['parents'][$index] = $selector.strtolower(str_replace(' ', '-', $sidebar_label));
+			// $parent_child['parents'][$index] = $selector.strtolower(str_replace(' ', '-', $sidebar_label));
+			$parent_child['parents'][$index] = $sidebar_id;
 			$index++;
 		}
 		return $parent_child;
@@ -158,17 +160,17 @@ class Adminlte {
 
 					case 'link':
 						if ($return) {
-							return "<a id='$btn->id' href='$btn->href' $btn->attribute class='$btn->class'><i class='$btn->icon'></i> $btn->label</a>";
+							return "<a ".($btn->id ? "".($btn->id ? "id='$btn->id'" : "")."" : "")." href='$btn->href' $btn->attribute class='$btn->class'><i class='$btn->icon'></i> $btn->label</a>";
 						} else {
-							echo "<a id='$btn->id' href='$btn->href' $btn->attribute class='$btn->class'><i class='$btn->icon'></i> $btn->label</a>";
+							echo "<a ".($btn->id ? "".($btn->id ? "id='$btn->id'" : "")."" : "")." href='$btn->href' $btn->attribute class='$btn->class'><i class='$btn->icon'></i> $btn->label</a>";
 						}
 						break;
 					
 					default:
 						if ($return) {
-							return "<button id='$btn->id' onclick='$btn->onclick'$btn->attribute class='$btn->class'><i class='$btn->icon'></i> $btn->label</button>";
+							return "<button ".($btn->id ? "id='$btn->id'" : "")." ".($btn->onclick ? "onclick='$btn->onclick'" : "")." $btn->attribute class='$btn->class'><i class='$btn->icon'></i> $btn->label</button>";
 						} else {
-							echo "<button id='$btn->id' onclick='$btn->onclick'$btn->attribute class='$btn->class'><i class='$btn->icon'></i> $btn->label</button>";
+							echo "<button ".($btn->id ? "id='$btn->id'" : "")." ".($btn->onclick ? "onclick='$btn->onclick'" : "")." $btn->attribute class='$btn->class'><i class='$btn->icon'></i> $btn->label</button>";
 						}
 						break;
 				}
@@ -178,17 +180,17 @@ class Adminlte {
 
 				case 'link':
 					if ($return) {
-						return "<a id='$btn->id' href='$btn->href' $btn->attribute class='$btn->class'><i class='$btn->icon'></i> $btn->label</a>";
+						return "<a ".($btn->id ? "id='$btn->id'" : "")." href='$btn->href' $btn->attribute class='$btn->class'><i class='$btn->icon'></i> $btn->label</a>";
 					} else {
-						echo "<a id='$btn->id' href='$btn->href' $btn->attribute class='$btn->class'><i class='$btn->icon'></i> $btn->label</a>";
+						echo "<a ".($btn->id ? "id='$btn->id'" : "")." href='$btn->href' $btn->attribute class='$btn->class'><i class='$btn->icon'></i> $btn->label</a>";
 					}
 					break;
 				
 				default:
 					if ($return) {
-						return "<button id='$btn->id' onclick='$btn->onclick'$btn->attribute class='$btn->class'><i class='$btn->icon'></i> $btn->label</button>";
+						return "<button ".($btn->id ? "id='$btn->id'" : "")." ".($btn->onclick ? "onclick='$btn->onclick'" : "")." $btn->attribute class='$btn->class'><i class='$btn->icon'></i> $btn->label</button>";
 					} else {
-						echo "<button id='$btn->id' onclick='$btn->onclick'$btn->attribute class='$btn->class'><i class='$btn->icon'></i> $btn->label</button>";
+						echo "<button ".($btn->id ? "id='$btn->id'" : "")." ".($btn->onclick ? "onclick='$btn->onclick'" : "")." $btn->attribute class='$btn->class'><i class='$btn->icon'></i> $btn->label</button>";
 					}
 					break;
 			}

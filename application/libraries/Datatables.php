@@ -37,6 +37,7 @@
     private $add_columns    = array();
     private $edit_columns   = array();
     private $unset_columns  = array();
+    private $order_by       = array();
 
     /**
     * Copies an instance of CI
@@ -61,6 +62,11 @@
         $iStart++;
       }
       return $aaData;
+    }
+
+    public function order_by($columns, $order) {
+      $this->order_by[] = ['columns'=>$columns, 'order'=>$order];
+      return $this;
     }
 
     /**
@@ -297,6 +303,16 @@
       return $this;
     }
 
+    public function get_order_by() {
+      foreach ($this->order_by as $key => $var) {
+        $this->ci->db->order_by($var['columns'], $var['order']);
+      }
+    }
+
+    public function getter() {
+      return $this->order_by;
+    }
+
     /**
     * Builds all the necessary query segments and performs the main query based on results set from chained statements
     *
@@ -306,9 +322,9 @@
     */
     public function generate($output = 'json', $charset = 'UTF-8')
     {
-      if(strtolower($output) == 'json')
-        $this->get_paging();
 
+      if(strtolower($output) == 'json') $this->get_paging();
+      $this->get_order_by();
       $this->get_ordering();
       $this->get_filtering();
       return $this->produce_output(strtolower($output), strtolower($charset));

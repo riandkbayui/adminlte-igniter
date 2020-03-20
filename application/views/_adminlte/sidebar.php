@@ -12,7 +12,7 @@
 
         <?php if ($is_have_childs > 0): ?>
         <!---- -->
-          <li id="sidebar_<?php echo strtolower(str_replace(' ', '-', $parent->sidebar_label)) ?>" class="nav-item has-treeview">
+          <li id="<?php echo $parent->sidebar_id ?>" class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon <?php echo $parent->sidebar_icon ?>"></i>
               <p>
@@ -33,7 +33,7 @@
         <!---- -->
         <?php else: ?>
           <li class="nav-item">
-            <a href="<?php echo base_url($parent->sidebar_href) ?>" id="sidebar_<?php echo strtolower(str_replace(' ', '-', $parent->sidebar_label)) ?>" class="nav-link">
+            <a href="<?php echo base_url($parent->sidebar_href) ?>" id="<?php echo $parent->sidebar_id ?>" class="nav-link">
               <i class="nav-icon <?php echo $parent->sidebar_icon ?>"></i>
               <p><?php echo $parent->sidebar_label ?></p>
             </a>

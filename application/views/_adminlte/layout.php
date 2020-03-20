@@ -30,6 +30,9 @@
   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/plugins/select2/css/select2.min.css') ?>">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') ?>">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/plugins/datepicker/css/bootstrap-datepicker3.min.css') ?>">
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/plugins/toastr/toastr.min.css') ?>">
+  <!-- <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/plugins/sweetalert2/sweetalert2.min.css') ?>"> -->
+  <!-- <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') ?>"> -->
 <?php foreach ($css as $key => $var): ?>
   <link rel="stylesheet" href="<?php echo base_url($var) ?>">
 <?php endforeach ?>
@@ -55,6 +58,12 @@
   <script type="text/javascript" src="<?php echo base_url('assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') ?>"></script>
   <script type="text/javascript" src="<?php echo base_url('assets/plugins/select2/js/select2.full.min.js') ?>"></script>
   <script type="text/javascript" src="<?php echo base_url('assets/plugins/datepicker/js/bootstrap-datepicker.min.js') ?>"></script>
+  <script type="text/javascript" src="<?php echo base_url('assets/plugins/loading-overlay/loadingoverlay.min.js') ?>"></script>
+  <script type="text/javascript" src="<?php echo base_url('assets/plugins/toastr/toastr.min.js') ?>"></script>
+  <script type="text/javascript" src="<?php echo base_url('assets/plugins/number-format/jquery.number.min.js') ?>"></script>
+  <!-- <script type="text/javascript" src="<?php echo base_url('assets/plugins/sweetalert2/sweetalert2.min.js') ?>"></script> -->
+  <!-- <script type="text/javascript" src="<?php echo base_url('assets/plugins/sweetalert2/sweetalert2.all.min.js') ?>"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <?php foreach ($javascript as $key => $var): ?>
   <script type="text/javascript" src="<?php echo base_url($var) ?>"></script>
 <?php endforeach ?>
@@ -65,7 +74,7 @@
   </script>
 
 </head>
-<body class="hold-transition sidebar-mini layout-fixed">
+<body class="hold-transition sidebar-mini layout-fixed sidebar-collapse">
 <div class="wrapper">
 
   <?php echo $navbar ?>
